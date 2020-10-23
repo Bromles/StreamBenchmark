@@ -28,8 +28,44 @@
     streamOnArrayListWithReduce                           100000000   avgt   20  1341.798 ± 78.126  ms/op
     streamOnSimpleArrayOnClassWithReduce                  100000000   avgt   20  1411.742 ± 82.362  ms/op
     
+#### TL;DR results (grouped by data structure):
     
-#### Full benchmark output
+    Array of primitives:
+    
+    Benchmark                                            (arraySize)  Mode  Cnt     Score    Error  Units
+    parallelStreamOnSimpleArrayOnPrimitiveWithReduce      100000000   avgt   20    65.237 ± 32.303  ms/op
+    parallelIntStreamOnSimpleArrayOnPrimitiveWithReduce   100000000   avgt   20    66.512 ± 34.315  ms/op
+    forLoopOnSimpleArrayOnPrimitive                       100000000   avgt   20    71.541 ±  2.594  ms/op
+    streamOnSimpleArrayOnPrimitiveWithReduce              100000000   avgt   20    87.087 ±  1.267  ms/op
+    intStreamOnSimpleArrayOnPrimitiveWithReduce           100000000   avgt   20    87.360 ±  1.458  ms/op
+    parallelStreamOnSimpleArrayOnPrimitiveWithFilter      100000000   avgt   20   102.852 ±  1.252  ms/op
+    parallelIntStreamOnSimpleArrayOnPrimitiveWithFilter   100000000   avgt   20   122.384 ± 28.286  ms/op
+    forEachLoopOnSimpleArrayOnPrimitive                   100000000   avgt   20   406.020 ±  8.629  ms/op
+    streamOnSimpleArrayOnPrimitiveWithFilter              100000000   avgt   20   429.699 ± 18.457  ms/op
+    intStreamOnSimpleArrayOnPrimitiveWithFilter           100000000   avgt   20   439.117 ± 13.151  ms/op
+    
+    Array of Integer objects: 
+    
+    Benchmark                                            (arraySize)  Mode  Cnt     Score    Error  Units
+    parallelStreamOnSimpleArrayOnClassWithFilter          100000000   avgt   20   183.783 ± 10.396  ms/op
+    forEachLoopOnSimpleArrayOnClass                       100000000   avgt   20   250.709 ±  4.265  ms/op
+    forLoopOnSimpleArrayOnClass                           100000000   avgt   20   268.845 ±  9.756  ms/op
+    parallelStreamOnSimpleArrayOnClassWithReduce          100000000   avgt   20   471.038 ± 36.790  ms/op
+    streamOnSimpleArrayOnClassWithFilter                  100000000   avgt   20   783.755 ± 19.685  ms/op
+    streamOnSimpleArrayOnClassWithReduce                  100000000   avgt   20  1411.742 ± 82.362  ms/op
+    
+    ArrayList<Integer>:
+    
+    Benchmark                                            (arraySize)  Mode  Cnt     Score    Error  Units 
+    parallelStreamOnArrayListWithFilter                   100000000   avgt   20   173.798 ± 17.986  ms/op
+    forLoopOnArrayList                                    100000000   avgt   20   291.629 ±  8.090  ms/op
+    forEachLoopOnArrayList                                100000000   avgt   20   325.317 ±  9.851  ms/op
+    parallelStreamOnArrayListWithReduce                   100000000   avgt   20   478.093 ± 45.455  ms/op
+    streamOnArrayListWithFilter                           100000000   avgt   20   743.722 ± 15.542  ms/op
+    streamOnArrayListWithReduce                           100000000   avgt   20  1341.798 ± 78.126  ms/op
+    
+    
+#### Full benchmark output:
     
     # JMH version: 1.21
     # VM version: JDK 11.0.8, OpenJDK 64-Bit Server VM, 11.0.8+10-post-Debian-1deb10u1
