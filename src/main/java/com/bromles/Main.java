@@ -15,7 +15,13 @@ import java.util.concurrent.TimeUnit;
 @Measurement(iterations = 10)
 @State(Scope.Benchmark)
 @Fork(value = 2)
-public class StreamBenchmark {
+public class Main {
+    public static void main(String[] args) throws RunnerException {
+        Options options = new OptionsBuilder()
+                .include(Main.class.getSimpleName())
+                .build();
+        new Runner(options).run();
+    }
 
     public Integer[] array;
 
@@ -39,12 +45,5 @@ public class StreamBenchmark {
     @Benchmark
     public long streamArray() {
         return Arrays.stream(array).filter(o -> o % 2 != 0).count();
-    }
-
-    public static void main(String[] args) throws RunnerException {
-        Options options = new OptionsBuilder()
-                .include(StreamBenchmark.class.getSimpleName())
-                .build();
-        new Runner(options).run();
     }
 }
