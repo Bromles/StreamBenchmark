@@ -1,5 +1,5 @@
 # Java Stream API vs classic for loop performance benchmark
-## Java 11 with JMH 1.21 was used
+## Java 11 with JMH 1.21 were used to count even numbers in an array of 100 million elements
 
 ### TL:DR results:
     
