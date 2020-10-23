@@ -39,7 +39,7 @@ public class Main {
     @Benchmark
     public long simpleArray() {
         long count = 0;
-        for(int i = 0; i < 10; i++) {
+        for(int i = 0; i < arraySize; i++) {
             if(array[i] % 2 == 0){
                 count++;
             }
@@ -49,7 +49,7 @@ public class Main {
     }
 
     @Benchmark
-    public long streamArray() {
+    public long streamCountArray() {
         return Arrays.stream(array).filter(o -> o % 2 != 0).count();
     }
 }
