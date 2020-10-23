@@ -7,6 +7,7 @@ import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
@@ -23,11 +24,16 @@ public class Main {
         new Runner(options).run();
     }
 
+    @Param({"100000000"})
+    int arraySize;
     public Integer[] array;
 
     @Setup
     public void setup() {
-        array = new Integer[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        array = new Integer[arraySize];
+        for (int i = 0; i < arraySize; i++) {
+            array[i] = new Random().nextInt(1000);
+        }
     }
 
     @Benchmark
